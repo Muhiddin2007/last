@@ -22,6 +22,7 @@ const Main = (props) => {
     onSecondActives,
     useThirdActive,
     onThirdActives,
+    ortgaTitle
   } = props;
   return (
     <>
@@ -31,7 +32,7 @@ const Main = (props) => {
             <span>
               <FaArrowLeft />
             </span>
-            Ortga
+            {ortgaTitle}
           </a>
         </Ortga>
         <div className="soon">

@@ -7,7 +7,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { state } from "./service/data";
 
 const App = () => {
+  // TODO здесь протекает абстракция
   const [useActive, setUseActive] = useState({});
+
   const [useSecondActive, setSecondUseActive] = useState({});
   const [useThirdActive, setThirdUseActive] = useState({});
   const onActives = (state) => {
@@ -20,9 +22,14 @@ const App = () => {
     setThirdUseActive(state);
   };
   const getOrtgaTitle = (state1, state2, state3) => {
-    const value1 = !!state1 ? state1 : "";
-    const value2 = !!state2 ? state2 : "";
-    const value3 = !!state3 ? state3 : "";
+    console.log(JSON.stringify(state1))
+    console.log(JSON.stringify(state2))
+    console.log(JSON.stringify(state3))
+
+
+    const value1 = Array.isArray(state1) ? "Ortga" : state1?.name;
+    const value2 = !!state2?.name ? state2.name : "";
+    const value3 = !!state3?.name ? state3.name : "";
     return `${value1} ${value2} ${value3}`;
   };
   useEffect(() => {
@@ -45,6 +52,7 @@ const App = () => {
                 onSecondActives={onSecondActives}
                 onThirdActives={onThirdActives}
                 useThirdActive={useThirdActive}
+                ortgaTitle = {getOrtgaTitle(useActive,useSecondActive, useThirdActive )}
               />
             }
           />
